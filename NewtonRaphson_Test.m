@@ -1,3 +1,6 @@
+clear;
+clc;
+
 syms x;
 g(x) = x^3 + x^2 + x + 7;
 y(x) = diff(g,x);

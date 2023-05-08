@@ -3,14 +3,14 @@ clc;
 
 A = (38+26)/2;
 
-syms x f(x) t(x);
+syms f(x) t(x);
 
 f(x) = cos(A*x);
 
 a = pi/4;
 
-no_of_term = 6;
-N_per_plot = 2;
+no_of_term = 30;
+N_per_plot = 6;
 
 t(x) = f(a);
 deri = diff(f, x);
@@ -40,6 +40,7 @@ for i = 1:no_of_term
 end
 
 % checking for random input near expansion point(pi/4)
-value = pi/4.2; %distance increases from the expansion point => more term needed in the series
+% value = pi/4.2; %distance increases from the expansion point => more term needed in the series
+value = input("Enter the Point : ")
 fprintf('From Taylor Series => %.9f\n', t(value));
 fprintf('From Original Function => %.9f\n', f(value));

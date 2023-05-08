@@ -11,7 +11,7 @@ T = L/R;
 theta = atan((W*L)/R);
 
 max_it = 100;
-tol = 0.001;
+tol = 0.0001;
 
 root(1) = 3.8;
 
@@ -24,7 +24,7 @@ for n = 1:max_it
     root(n+1) = fn(root(n));
     fprintf('%f\n',root(n));
     if(abs(root(n+1) - root(n)) < tol)
-        fprintf('%f\n',root(n+1));
+        fprintf('Final Root => %f\n',root(n+1));
         break;
     end
 end
