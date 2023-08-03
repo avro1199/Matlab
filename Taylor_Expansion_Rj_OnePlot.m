@@ -8,8 +8,7 @@ syms x f(x) t(x);
 f(x) = cos(A*x);
 
 a = pi/4;
-no_of_term = ;
-
+no_of_term = 10;
 t(x) = f(a);
 deri = diff(f, x);
 
