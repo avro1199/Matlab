@@ -1,10 +1,10 @@
 clear;
 clc;
 
-syms f(x) g(x);
+syms x;
 
-f(x) = 3*x^2 - 9*x
-g(x) = (x^2)/3
+f(x) = 3*x^2 - 9*x;
+g(x) = (x^2)/3;
 
 fplot(f,LineWidth=1)
 grid on
