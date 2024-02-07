@@ -2,8 +2,8 @@
 % A = input('Enter the coefficient matrix A : \n');
 % B = input('Enter the RHS of the system: ');
 
-A = [8,6,0;2,-8,5;-10,10,15];
-B = [2;4;8];
+A = [11,-5,-6;-5,19,-2;-1,-1,2];
+B = [12;0;0];
 
 % Augment A with B
 augmented_matrix = [A, B];
@@ -30,15 +30,15 @@ disp(x);
 
 % Plot the solution using a bar plot
 figure;
-subplot(1, 2, 1);
-bar(x);
-title('Solution X');
-xlabel('Variable Index');
-ylabel('Variable Value');
-grid on;
+% subplot(1, 2, 1);
+% bar(x);
+% title('Solution X');
+% xlabel('Variable Index');
+% ylabel('Variable Value');
+% grid on;
 
 % Create 3D plot representing the planes defined by the equations
-subplot(1, 2, 2);
+% subplot(1, 2, 2);
 [x_mesh, y_mesh] = meshgrid(-10:0.1:10, -10:0.1:10);
 
 % Calculate z values based on the equations
@@ -48,7 +48,7 @@ z3 = (B(3) - A(3, 1) * x_mesh - A(3, 2) * y_mesh) / A(3, 3);
 
 
 % Plot the planes
-surf(x_mesh, y_mesh, z1, 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'FaceColor', 'r');
+surf(x_mesh, y_mesh, z1, 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'FaceColor', 'm');
 hold on;
 surf(x_mesh, y_mesh, z2, 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'FaceColor', 'g');
 surf(x_mesh, y_mesh, z3, 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'FaceColor', 'b');

@@ -1,16 +1,12 @@
 clear;
 clc;
 
-a = linspace(-10,.1,10);
-b = (2-8.*a)/6;
-c = a.*0;
-
 % Input matrix A and matrix B manually
 % A = input('Input matrix A: ');
 % B = input('Input matrix B: ');
 
-A = [8,6,0;2,-8,5;-10,10,15];
-B = [2;4;8];
+A = [11,-5,-6;-5,19,-2;-1,-1,2];
+B = [12;0;0];
 
 sol = A\B; %Original Solution
 
@@ -31,21 +27,23 @@ for pivot_row = 1:m-1
         augmented_matrix(current_row, :) = augmented_matrix(current_row, :) - factor * augmented_matrix(pivot_row, :);
         end
     end
+    % augmented_matrix
     % Plotting each stage by Rj Avro %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     z1 = ((augmented_matrix(1, end) - augmented_matrix(1,1)*x - augmented_matrix(1,2)*y)) / augmented_matrix(1,3);
     z2 = ((augmented_matrix(2, end) - augmented_matrix(2,1)*x - augmented_matrix(2,2)*y)) / augmented_matrix(2,3);
     z3 = ((augmented_matrix(3, end) - augmented_matrix(3,1)*x - augmented_matrix(3,2)*y)) / augmented_matrix(3,3);
 
     figure;
     hold on;
-    surf(x, y, z1);
-    surf(x, y, z2);
-    surf(x, y, z3);
-    plot3(a,b,c)
+    surf(x, y, z1, FaceColor="m", FaceAlpha=.7,EdgeColor="none");
+    surf(x, y, z2, FaceColor="g", FaceAlpha=.7, EdgeColor="none");
+    surf(x, y, z3, FaceColor="b", FaceAlpha=.7, EdgeColor="none");
     xlabel('X-axis');
     ylabel('Y-axis');
     zlabel('Z-axis');
     title('Surface defined by Ax = b');
+    view(30,70)
     % shading interp;
     % Add the vector b as a point on the surface
     plot3(sol(1), sol(2), sol(3), 'ro', 'LineWidth',2, MarkerSize=2);
@@ -64,6 +62,7 @@ for i = m:-1:1
     for j = i-1:-1:1
         augmented_matrix(j, end) = augmented_matrix(j, end) - augmented_matrix(j, i) * solution(i);
     end
+    %Also need to plot here (Reduced Echelon Form)%
 end
 
 % Display the solution

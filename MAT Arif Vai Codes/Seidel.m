@@ -1,8 +1,8 @@
 clear;
 clc;
 
-A = [8,6,0;2,-8,5;-10,10,15];
-B = [2;4;8];
+A = [11,-5,-6;-5,19,-2;-1,-1,2];
+B = [12;0;0];
 
 % disp('Enter the system of linear equations in the form of AX=B');
 % A = input('Enter matrix A :   \n');
@@ -52,17 +52,24 @@ k = 1;
 X(:, 1) = X0;
 err = 1000000000 * rand(na, 1); 
 
-% Initialize figure for 3D plot of the solution space
-figure;
+sol = A\B; %Original Solution
 
 % Create a meshgrid for visualization
 [x, y] = meshgrid(-10:0.1:10, -10:0.1:10);
 
+% Initialize figure for 3D plot of the solution space
+figure;
+
+plot3(sol(1), sol(2), sol(3), 'ro', 'LineWidth',3, MarkerSize=6);
+grid on;
+hold on;
+axis tight;
+% view(-45,60);
+
 % Plot the planes defined by the equations
 for i = 1:na
-    z = (-A(i, 1) * x - A(i, 2) * y + A(i, end)) / A(i, 3);
+    z = (B(i) - A(i, 1)*x - A(i, 2)*y) / A(i, 3); %%Modified by Rj Avro%%
     surf(x, y, z, 'FaceAlpha', 0.5, 'EdgeColor', 'none');
-    hold on;
 end
 
 while any(abs(err) >= tol) && k <= 100
@@ -73,8 +80,7 @@ while any(abs(err) >= tol) && k <= 100
     iteration_table(k, end) = norm(err, inf);
 
     % Plot the current iteration point in the solution space
-    plot3(X(1, k:k+1), X(2, k:k+1), X(3, k:k+1), 'o-', 'MarkerSize', 8, 'MarkerFaceColor', 'b');
-    hold on;
+    plot3(X(1, k:k+1), X(2, k:k+1), X(3, k:k+1), 'o-', 'MarkerSize', 5, 'MarkerFaceColor', 'b');
 
     % Display the solution after each iteration
     fprintf('Iteration %d - X: %s, Error: %f\n', k, mat2str(X(:, k + 1)), norm(err, inf));
@@ -82,12 +88,12 @@ while any(abs(err) >= tol) && k <= 100
     k = k + 1;
 end
 
-xlabel('X1');
-ylabel('X2');
-zlabel('X3');
+xlabel('X');
+ylabel('Y');
+zlabel('Z');
 title('Solution Space');
 grid on;
-hold off;
+% hold off;
 
 fprintf('The final answer obtained after %g iterations is  \n', k - 1);
 x = X(:, k - 1);

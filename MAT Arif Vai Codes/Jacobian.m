@@ -1,13 +1,17 @@
 % Run the code from script after loading data6
-n   = input('Number of equations, n:  ');
-A1  = input('Enter the input matrix: ');
-A   = zeros(n, n+1);
+% n   = input('Number of equations, n:  ');
+n = 3;
+% A1  = input('Enter the input matrix: ');
+A = [11,-5,-6,12;-5,19,-2,0;-1,-1,2,0];
+% A   = zeros(n, n+1);
 x1  = zeros(n, 1);
 x2  = zeros(n, 1);
-tol = input('Tolerance: ');
-m   = input('Maximum number of iterations, m:  ');
+% tol = input('Tolerance: ');
+tol = .001;
+% m   = input('Maximum number of iterations, m:  ');
+m = 100;
 
-A   = A1;
+% A   = A1;
 
 k = 1;
 iteration_table = zeros(m, n + 1);
@@ -64,12 +68,12 @@ figure;
 % Plot the planes defined by the equations
 for i = 1:n
     z = (-A(i, 1) * x - A(i, 2) * y + A(i, end)) / A(i, 3);
-    surf(x, y, z, 'FaceAlpha', 0.5, 'EdgeColor', 'none');
+    surf(x, y, z, 'FaceAlpha', 0.5, 'EdgeColor', 'none',FaceColor='flat');
     hold on;
 end
 
 % Plot the final solution in the solution space
-plot3(x2(1), x2(2), x2(3), 'ro', 'MarkerSize', 8, 'MarkerFaceColor', 'r');
+plot3(x2(1), x2(2), x2(3), 'ro', 'MarkerSize', 5, 'MarkerFaceColor', 'r');
 xlabel('X1');
 ylabel('X2');
 zlabel('X3');
