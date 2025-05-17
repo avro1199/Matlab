@@ -1,4 +1,7 @@
 close all;
+clear all;
+clc;
+
 % M2_6(ii)
 % Define the transfer function G(s) = (s + 1) / (s^2 + 3s + 1)
 numerator = [1, 1];         
