@@ -1,0 +1,10 @@
+clear;
+clc;
+
+s = tf('s');
+
+g = (s+1)/(s^2 + 3*s + 1);
+
+t = linspace(0, 10, 1000)
+
+lsim(g)
