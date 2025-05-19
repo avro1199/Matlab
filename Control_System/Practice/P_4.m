@@ -9,5 +9,5 @@ for n = [1:6]
     % step(g, linspace(0, 10, 100));
 end
 
-% step(g(1), g(2), g(3), g(4), g(5), g(6), linspace(0, 12, 1000));
-impulse(g(1), g(2), g(3), g(4), g(5), g(6), linspace(0, 12, 1000));
+step(g(1), g(2), g(3), g(4), g(5), g(6), linspace(0, 12, 1000));
+% impulse(g(1), g(2), g(3), g(4), g(5), g(6), linspace(0, 12, 1000));
